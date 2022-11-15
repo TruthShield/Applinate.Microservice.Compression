@@ -6,9 +6,9 @@
     {
         public bool SkipDuringTesting => false;
 
-        public void Initialize(IServiceCollection services, bool testing = false)
+        public void Initialize(bool testing = false)
         {
-            Applinate.ServiceProvider.RegisterSingleton<ICompress, ConcreteCompressor>();
+            Applinate.ServiceProvider.Register<ICompress>(() => new ConcreteCompressor(), InstanceLifetime.Singleton);
         }
     }
 }
